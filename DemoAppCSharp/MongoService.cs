@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MongoService
 {
     private readonly IMongoCollection<Person> _collection;
+    private readonly IMongoCollection<User> _users;
 
     public MongoService()
     {
@@ -12,9 +13,14 @@ public class MongoService
         var client = new MongoClient("mongodb+srv://noppawat1:Pat%40220741@cluster0.jxa1rit.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
         var db = client.GetDatabase("DemoDB");  // ชื่อฐานข้อมูลที่คุณต้องการใช้งานบน Atlas
         _collection = db.GetCollection<Person>("People");
+        _users = db.GetCollection<User>("Users");
 
     }
-
+    public bool ValidateUser(string username, string password, out User user)
+    {
+        user = _users.Find(u => u.Username == username && u.Password == password).FirstOrDefault();
+        return user != null;
+    }
     public void Create(Person p) => _collection.InsertOne(p);
     public List<Person> GetAll() => _collection.Find(_ => true).ToList();
     public void Update(string id, Person p) => _collection.ReplaceOne(x => x.Id == id, p);

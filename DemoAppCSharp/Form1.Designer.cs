@@ -11,6 +11,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Button btnBack;
+
 
         /// <summary>
         /// Required method for Designer support
@@ -91,6 +93,15 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
 
+            // btnBack
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnBack.Location = new System.Drawing.Point(700, 320);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 30);
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+
             // Form1
             this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.dataGridView1);
@@ -102,6 +113,8 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnBack);
+
             this.Name = "Form1";
             this.Text = "MongoDB CRUD Demo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

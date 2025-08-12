@@ -114,5 +114,15 @@ namespace DemoAppCSharp
             }
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // ซ่อนฟอร์มปัจจุบันก่อน
+            FormMenu menu = new FormMenu();
+            menu.Show(); // เปิดฟอร์มเมนูใหม่
+        }
+
+
+
+
     }
 }

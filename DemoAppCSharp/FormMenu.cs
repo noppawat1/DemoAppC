@@ -7,10 +7,11 @@ namespace DemoAppCSharp
 {
     public partial class FormMenu : Form
     {
-        public FormMenu()
+        private readonly string currentUserRole;
+        public FormMenu(string userRole)
         {
             InitializeComponent();
-
+            currentUserRole = userRole;
             // โหลดรายชื่อ Form ในโปรเจค ยกเว้น FormMenu และ FormLogin
             var formTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()
@@ -21,7 +22,35 @@ namespace DemoAppCSharp
 
             foreach (var formType in formTypes)
             {
-                comboForms.Items.Add(formType.Name);
+                if (formType.Name == "Form5" && currentUserRole != "Admin")
+                    continue;
+                string displayName = formType.Name;
+                if (formType.Name == "Form1")
+                {
+                    displayName = "Manage";
+                }
+                else if (formType.Name == "Form2")
+                {
+                    displayName = "Export CSV";
+                }
+                else if (formType.Name == "Form3")
+                {
+                    displayName = "Import CSV";
+                }
+                else if (formType.Name == "Form4")
+                {
+                    displayName = "DashBoard";
+                }
+                else if (formType.Name == "Form5")
+                {
+                    displayName = "User Management";
+                }
+                // ใส่ object ที่เก็บชื่อแสดงและ Type
+                comboForms.Items.Add(new FormItem
+                {
+                    DisplayName = displayName,
+                    FormType = formType
+                });
             }
 
             if (comboForms.Items.Count > 0)
@@ -30,22 +59,35 @@ namespace DemoAppCSharp
 
         private void btnOpenForm_Click(object sender, EventArgs e)
         {
-            if (comboForms.SelectedItem != null)
+            if (comboForms.SelectedItem is FormItem selectedItem)
             {
-                var formName = comboForms.SelectedItem.ToString();
-                var type = Assembly.GetExecutingAssembly().GetType($"{this.GetType().Namespace}.{formName}");
-                if (type != null)
+                Form form;
+
+                // รายชื่อฟอร์มที่ต้องส่ง userRole เข้า constructor
+                var formsRequireRole = new[] { typeof(Form1), typeof(Form5) };
+
+                if (formsRequireRole.Contains(selectedItem.FormType))
                 {
-                    var form = (Form)Activator.CreateInstance(type);
-                    this.Hide();
-                    form.FormClosed += (s, args) => this.Close();
-                    form.Show();
+                    form = (Form)Activator.CreateInstance(selectedItem.FormType, currentUserRole);
                 }
+                else
+                {
+                    form = (Form)Activator.CreateInstance(selectedItem.FormType, currentUserRole);
+                }
+
+                this.Hide();
+                form.FormClosed += (s, args) => this.Close();
+                form.Show();
             }
         }
+
+
+
+
+
         private void btnOpenForm1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            Form1 form1 = new Form1(currentUserRole);
             form1.Show();
             this.Hide(); // ซ่อนเมนู ไม่ปิด
         }
@@ -60,6 +102,16 @@ namespace DemoAppCSharp
             }
             this.Close(); // ปิดเมนู
         }
+    }
 
+    public class FormItem
+    {
+        public string DisplayName { get; set; }
+        public Type FormType { get; set; }
+
+        public override string ToString()
+        {
+            return DisplayName;  // ให้แสดงชื่อที่เราต้องการใน ComboBox
+        }
     }
 }

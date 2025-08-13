@@ -47,7 +47,7 @@ namespace DemoAppCSharp
                 MessageBox.Show($"Welcome {user.Username}", "Login success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // ถ้าต้องการเปิด Form1:
-                var main = new FormMenu();
+                var main = new FormMenu(user.Role);
                 this.Hide();
                 main.FormClosed += (s, args) => this.Close();
                 main.Show();

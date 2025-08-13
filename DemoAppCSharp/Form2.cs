@@ -10,11 +10,12 @@ namespace DemoAppCSharp
     public partial class Form2 : Form
     {
         private MongoService _service;
-
-        public Form2()
+        private string currentUserRole;
+        public Form2(string userRole)
         {
             InitializeComponent();
             _service = new MongoService();
+            currentUserRole = userRole;
         }
 
         private void btnGetAll_Click(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace DemoAppCSharp
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide(); // ซ่อนฟอร์มปัจจุบันก่อน
-            FormMenu menu = new FormMenu();
+            FormMenu menu = new FormMenu(currentUserRole);
             menu.Show(); // เปิดฟอร์มเมนูใหม่
         }
     }

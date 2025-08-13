@@ -77,11 +77,12 @@ C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\bin\Debug\System.Security.Pri
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\bin\Debug\System.Text.Encoding.CodePages.xml
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.csproj.AssemblyReference.cache
-C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.exe.config
+C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.Form1.resources
+C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.Form2.resources
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.Properties.Resources.resources
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.csproj.GenerateResource.cache
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.csproj.CoreCompileInputs.cache
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppC.F567F667.Up2Date
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.exe
 C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.pdb
-C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.Form2.resources
+C:\Users\patas\source\repos\DemoAppC\DemoAppCSharp\obj\Debug\DemoAppCSharp.exe.config
